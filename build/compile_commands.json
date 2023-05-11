@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/varvara/projects/dirs_viewer/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/main.cpp.o -c /home/varvara/projects/dirs_viewer/main.cpp",
+  "file": "/home/varvara/projects/dirs_viewer/main.cpp"
+},
+{
+  "directory": "/home/varvara/projects/dirs_viewer/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/user_files.cpp.o -c /home/varvara/projects/dirs_viewer/user_files.cpp",
+  "file": "/home/varvara/projects/dirs_viewer/user_files.cpp"
+},
+{
+  "directory": "/home/varvara/projects/dirs_viewer/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/audio_data_decoder/audio_data_reader.cpp.o -c /home/varvara/projects/dirs_viewer/audio_data_decoder/audio_data_reader.cpp",
+  "file": "/home/varvara/projects/dirs_viewer/audio_data_decoder/audio_data_reader.cpp"
+}
+]
