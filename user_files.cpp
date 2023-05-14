@@ -2,7 +2,7 @@
 #include <iostream>
 #include <boost/range/iterator_range.hpp>
 #include <string>
-#include "audio_data_decoder/audio_data_reader.hpp"
+#include "audio_data_decoder/audio_data_reader.h"
 
 static const int HEADER_SIZE = 10;
 
