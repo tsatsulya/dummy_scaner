@@ -25,7 +25,7 @@ std::string check_audio_extension(std::string file_path) {
 }
 
 
-void read_directory(const boost::filesystem::path &path_to_root_directory, std::vector<audio_data*> &tracks) {
+void read_directory(const boost::filesystem::path &path_to_root_directory, std::vector<audio::audio_data*> &tracks) {
 
 	boost::filesystem::path root_path = path_to_root_directory;
 	boost::filesystem::directory_iterator it{root_path};
