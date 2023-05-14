@@ -39,9 +39,9 @@ void read_directory(const boost::filesystem::path &path_to_root_directory, std::
 				std::string extension = check_audio_extension(entry.path().string());
 				bool is_audio = (extension == "MP3") || (extension == "FLAC"); // || (extension == "OggS");
 				if (extension == "MP3")
-					tracks.push_back(new mp3_data(entry.path().c_str()));
+					tracks.push_back(new audio::mp3_data(entry.path().c_str()));
 				if (extension == "FLAC")
-					tracks.push_back(new flac_data(entry.path().c_str()));
+					tracks.push_back(new audio::flac_data(entry.path().c_str()));
 
 				// if (is_audio) write_file_info();	
 
