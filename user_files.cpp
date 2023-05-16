@@ -7,7 +7,6 @@
 using namespace directories;
 using namespace boost::filesystem;
 
-
 static const int HEADER_SIZE = 10;
 
 std::string get_os_name() {
@@ -48,12 +47,12 @@ audio_extension_ check_audio_extension(std::string file_path) {
 }
 
 
-directory *read_directory(const path &path_to_root_directory, reading_mod mod, directory *dir) {
+directory *read_directory(const char *path_to_root_directory, directory_scaner::reading_mod mod, directory *dir) {
 
 	// std::cout <<  mod << std::endl;
+	path root_path{path_to_root_directory};
 
 	audio::tracklist_t tracks = {};
-	path root_path = path_to_root_directory;
 	directory_iterator it{root_path};
 	
 	if (is_directory(root_path)) {
@@ -73,8 +72,8 @@ directory *read_directory(const path &path_to_root_directory, reading_mod mod, d
 
 				dir->content_.push_back(new directory_content_obj(entry.path().string(), entry.path().filename().string(), FOLDER));
 
-				if (mod == RECURSIVE) 
-					read_directory(entry.path(), RECURSIVE, dir);
+				if (mod == directory_scaner::RECURSIVE) 
+					directory_scaner::read_directory(entry.path().c_str(), directory_scaner::RECURSIVE, dir);
 			}
 		}
 	}
