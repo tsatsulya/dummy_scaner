@@ -1,17 +1,20 @@
 [
 {
-  "directory": "/home/varvara/projects/dirs_viewer/build",
-  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/main.cpp.o -c /home/varvara/projects/dirs_viewer/main.cpp",
-  "file": "/home/varvara/projects/dirs_viewer/main.cpp"
+  "directory": "/home/varvara/projects/dummy_scaner/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dummy_scaner -g -o CMakeFiles/view.dir/main.cpp.o -c /home/varvara/projects/dummy_scaner/main.cpp",
+  "file": "/home/varvara/projects/dummy_scaner/main.cpp",
+  "output": "CMakeFiles/view.dir/main.cpp.o"
 },
 {
-  "directory": "/home/varvara/projects/dirs_viewer/build",
-  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/user_files.cpp.o -c /home/varvara/projects/dirs_viewer/user_files.cpp",
-  "file": "/home/varvara/projects/dirs_viewer/user_files.cpp"
+  "directory": "/home/varvara/projects/dummy_scaner/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dummy_scaner -g -o CMakeFiles/view.dir/user_files.cpp.o -c /home/varvara/projects/dummy_scaner/user_files.cpp",
+  "file": "/home/varvara/projects/dummy_scaner/user_files.cpp",
+  "output": "CMakeFiles/view.dir/user_files.cpp.o"
 },
 {
-  "directory": "/home/varvara/projects/dirs_viewer/build",
-  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dirs_viewer -g -o CMakeFiles/view.dir/audio_data_decoder/audio_data_reader.cpp.o -c /home/varvara/projects/dirs_viewer/audio_data_decoder/audio_data_reader.cpp",
-  "file": "/home/varvara/projects/dirs_viewer/audio_data_decoder/audio_data_reader.cpp"
+  "directory": "/home/varvara/projects/dummy_scaner/build",
+  "command": "/usr/bin/clang++ -DFLAC__NO_DLL -I/home/varvara/projects/dummy_scaner -g -o CMakeFiles/view.dir/audio_data_decoder/audio_data_reader.cpp.o -c /home/varvara/projects/dummy_scaner/audio_data_decoder/audio_data_reader.cpp",
+  "file": "/home/varvara/projects/dummy_scaner/audio_data_decoder/audio_data_reader.cpp",
+  "output": "CMakeFiles/view.dir/audio_data_decoder/audio_data_reader.cpp.o"
 }
 ]

@@ -13,6 +13,6 @@ int main() {
 	// print_flac_info(info1);
 	boost::filesystem::path root_path{"/home/varvara/Music"};
 
-	read_directory(root_path);
+	read_directory(root_path, LINEAL);
 	return 0;
 }

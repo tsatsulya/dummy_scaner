@@ -1,4 +1,4 @@
-# Install script for directory: /home/varvara/projects/dirs_viewer
+# Install script for directory: /home/varvara/projects/dummy_scaner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/varvara/projects/dirs_viewer/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/varvara/projects/dummy_scaner/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

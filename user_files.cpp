@@ -2,59 +2,84 @@
 #include <iostream>
 #include <boost/range/iterator_range.hpp>
 #include <string>
-#include "audio_data_decoder/audio_data_reader.h"
+#include "audio_data_decoder/audio_data.h"
+
+using namespace directories;
+using namespace boost::filesystem;
+
 
 static const int HEADER_SIZE = 10;
 
+std::string get_os_name() {
+    #ifdef _WIN32
+    	return "Windows 32-bit";
+    #elif _WIN64
+    	return "Windows 64-bit";
+    #elif __APPLE__ || __MACH__
+    	return "Mac OSX";
+    #elif __linux__
+    	return "Linux";
+    #elif __FreeBSD__
+    	return "FreeBSD";
+    #elif __unix || __unix__
+    	return "Unix";
+    #else
+    	return "Other";
+    #endif
+}
 
-std::string check_audio_extension(std::string file_path) {
+enum audio_extension_ : char {OGG = 0, FLAC, MP3, NOT_AN_AUDIO};
+
+audio_extension_ check_audio_extension(std::string file_path) {
 
 	FILE* file = fopen(file_path.c_str(), "r");
-	if (!file) return "be";
+	if (!file) return NOT_AN_AUDIO;
 
 	std::string buffer(4, '\0');
 
 	fread(&buffer[0], 1, HEADER_SIZE, file);
 	fclose(file);
 
-	if (buffer == "fLaC") return "FLAC";
-	if (buffer.substr(0, 3) == "ID3") return "MP3";
-	if (buffer == "OggS") return "OGG";
+	if (buffer == "fLaC") return FLAC;
+	if (buffer.substr(0, 3) == "ID3") return MP3;
+	if (buffer == "OggS") return OGG;
 
-	return "be";
+	return NOT_AN_AUDIO;
 }
 
 
-void read_directory(const boost::filesystem::path &path_to_root_directory, std::vector<audio::audio_data*> &tracks) {
+directory *read_directory(const path &path_to_root_directory, reading_mod mod, directory *dir) {
 
-	boost::filesystem::path root_path = path_to_root_directory;
-	boost::filesystem::directory_iterator it{root_path};
+	// std::cout <<  mod << std::endl;
+
+	audio::tracklist_t tracks = {};
+	path root_path = path_to_root_directory;
+	directory_iterator it{root_path};
 	
-	if (boost::filesystem::is_directory(root_path)) {
+	if (is_directory(root_path)) {
 
-		for (auto& entry : boost::make_iterator_range(boost::filesystem::directory_iterator(root_path), {})) {
+		for (auto& entry : boost::make_iterator_range(directory_iterator(root_path), {})) {
 
-			if (boost::filesystem::is_regular_file(entry)) {
+			if (is_regular_file(entry)) {
 
-				std::string extension = check_audio_extension(entry.path().string());
-				bool is_audio = (extension == "MP3") || (extension == "FLAC"); // || (extension == "OggS");
-				if (extension == "MP3")
-					tracks.push_back(new audio::mp3_data(entry.path().c_str()));
-				if (extension == "FLAC")
-					tracks.push_back(new audio::flac_data(entry.path().c_str()));
+				audio_extension_ extension = check_audio_extension(entry.path().string());
 
-				// if (is_audio) write_file_info();	
-
-				// std::cout << entry.path().string() << ((is_audio) ? " - audio" : " - not audio or can't open") << std::endl;
+				bool is_audio = (extension == MP3) || (extension == FLAC); // || (extension == "OggS");
+				if (is_audio)
+					dir->content_.push_back(new directory_content_obj(entry.path().string(), entry.path().filename().string(), ENTRY));
 			}
-			else if (boost::filesystem::is_directory(entry)) 
-				read_directory(entry.path());
+
+			else if (is_directory(entry)) {
+
+				dir->content_.push_back(new directory_content_obj(entry.path().string(), entry.path().filename().string(), FOLDER));
+
+				if (mod == RECURSIVE) 
+					read_directory(entry.path(), RECURSIVE, dir);
+			}
 		}
 	}
-	std::cout << '\n' << tracks.size();
 
-	for (auto& track : tracks)
-		track->print_file_info();
-	
-	return;
+	std::cout << dir->content_.size() << std::endl;
+
+	return dir;
 }
