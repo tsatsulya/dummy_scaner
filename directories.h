@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIRECTORIES_H
+#define DIRECTORIES_H
 
 #include <iostream>
 #include <vector>
@@ -33,3 +34,5 @@ namespace directories {
 		std::vector<directory_content_obj *> content_;
 	};
 }
+
+#endif
