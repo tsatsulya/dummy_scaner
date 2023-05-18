@@ -1,3 +1,0 @@
-[submodule "audio_data_decoder"]
-	path = audio_data_decoder
-	url = https://github.com/tsatsulya/audio_data_decoder

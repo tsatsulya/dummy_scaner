@@ -1,3 +1,0 @@
-/home/varvara/projects/dummy_scaner/build/CMakeFiles/view.dir
-/home/varvara/projects/dummy_scaner/build/CMakeFiles/edit_cache.dir
-/home/varvara/projects/dummy_scaner/build/CMakeFiles/rebuild_cache.dir
